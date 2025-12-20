@@ -16,10 +16,8 @@
             --text-color: #111111;
             --accent-color: #555555; /* Gris para fechas/detalles */
             --spacing-unit: 2rem;
-            --line-height: 1.5;
+            --line-height: 1.6; /* Un poco más de aire para el texto denso */
             --font-main: 'Inter', Helvetica, Arial, sans-serif;
-            /* Opción Monoespaciada (Descomentar si prefieres el look 'código/máquina'): */
-            /* --font-main: 'Courier Prime', 'Courier New', monospace; */
         }
 
         /* RESET & BASE */
@@ -32,12 +30,12 @@
             line-height: var(--line-height);
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
-            padding: 4rem 2rem; /* Margen amplio tipo documento */
+            padding: 4rem 2rem;
         }
 
-        /* CONTENEDOR PRINCIPAL (Ancho de lectura óptimo) */
+        /* CONTENEDOR PRINCIPAL */
         main {
-            max-width: 700px; /* Ancho típico de un A4 o doc de lectura */
+            max-width: 700px;
             margin: 0 auto;
         }
 
@@ -50,13 +48,13 @@
         }
 
         h2 {
-            font-size: 1rem; /* Mismo tamaño que texto, solo bold */
+            font-size: 1rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            margin-top: 3rem; /* Espacio antes de cada sección */
-            border-bottom: 1px solid #eee; /* Línea sutil separadora */
+            margin-bottom: 1.5rem;
+            margin-top: 3.5rem;
+            border-bottom: 1px solid #eee;
             padding-bottom: 0.5rem;
         }
 
@@ -68,8 +66,9 @@
 
         p {
             margin-bottom: 1rem;
-            font-weight: 300;
+            font-weight: 300; /* Light para el cuerpo */
             color: #222;
+            text-align: justify; /* Opcional: para un bloque de texto más ordenado */
         }
 
         .subtitle {
@@ -77,6 +76,7 @@
             color: var(--accent-color);
             font-weight: 300;
             margin-bottom: 2rem;
+            line-height: 1.4;
         }
 
         /* ENLACES */
@@ -96,70 +96,72 @@
         }
 
         .entry {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; /* Más espacio entre entradas */
             display: grid;
-            grid-template-columns: 120px 1fr; /* Columna fecha | Columna contenido */
-            gap: 1rem;
+            grid-template-columns: 120px 1fr;
+            gap: 1.5rem;
         }
 
         .date {
             font-size: 0.875rem;
             color: var(--accent-color);
-            font-feature-settings: "tnum"; /* Números tabulares */
+            font-feature-settings: "tnum";
+            margin-top: 2px; /* Alineación óptica con el título */
         }
 
         .details {
             display: flex;
             flex-direction: column;
         }
-
-        .role {
-            font-weight: 400; /* Regular */
-        }
         
         .institution {
             color: var(--accent-color);
             font-style: italic;
+            margin-bottom: 0.75rem;
+            display: block;
         }
 
         .description {
-            margin-top: 0.5rem;
             font-size: 0.95rem;
             color: #444;
         }
+        
+        .description p {
+            text-align: left; /* Reset del justify global si se desea */
+            margin-bottom: 0.5rem;
+        }
 
-        /* CONTACTO (Lista simple) */
+        /* CONTACTO */
         .contact-list {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             list-style: none;
             font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
 
-        /* RESPONSIVE (Móvil) */
+        /* RESPONSIVE */
         @media (max-width: 600px) {
             body { padding: 2rem 1.5rem; }
             
             .entry {
-                grid-template-columns: 1fr; /* Una sola columna en móvil */
-                gap: 0.25rem;
-                margin-bottom: 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
             }
             
             .date {
                 font-size: 0.8rem;
-                margin-bottom: 0.25rem;
                 opacity: 0.7;
             }
         }
 
-        /* PARA IMPRESIÓN (Si alguien le da a Ctrl+P) */
         @media print {
-            body { padding: 0; font-size: 12pt; }
+            body { padding: 0; font-size: 11pt; }
             main { max-width: 100%; }
             a { text-decoration: none; border: none; }
-            /* Mostrar URLs reales al imprimir si es necesario */
+            h2 { margin-top: 2rem; }
         }
     </style>
 </head>
@@ -170,17 +172,20 @@
         <!-- 1. PORTADA -->
         <header>
             <h1>Yi Saint-Jour</h1>
-            <p class="subtitle">Diseñadora & Project Manager.<br>Estratega Visual y Gestora de Procesos Creativos.</p>
+            <p class="subtitle">Diseñadora Multidisciplinaria & Coordinadora de Proyectos.<br>Enfoque en dirección artística, producción e implementación visual.</p>
         </header>
 
         <!-- 2. RESUMEN -->
         <section id="resumen">
-            <h2>Resumen</h2>
+            <h2>Perfil</h2>
             <p>
-                Profesional híbrida con una visión integral del diseño. Combino la sensibilidad artística con la capacidad ejecutiva de gestión. Actualmente me desempeño como Project Manager, orquestando el flujo de trabajo entre clientes y equipos creativos para transformar requerimientos en soluciones visuales tangibles.
+                Diseñadora egresada de la Universidad de Chile, con experiencia en la creación de material gráfico para diversas plataformas, desde redes sociales hasta piezas impresas. Mi enfoque multidisciplinario abarca diseño digital, fotografía, grabación, edición de video, animación e ilustración.
             </p>
             <p>
-                Mi enfoque se centra en la eficiencia de los procesos, la claridad comunicacional y la calidad estética, abarcando desde branding y RRSS hasta desarrollo web y copywriting.
+                Con profundo interés me involucro en todo el proceso para llevar a cabo un proyecto coherente, desde su fundamento y conceptualización, dirección artística, producción e implementación.
+            </p>
+            <p>
+                Soy una profesional organizada, resolutiva y con una gran capacidad para adaptarme a distintos lineamientos gráficos. Siempre en busca de nuevos aprendizajes para enfrentar cada desafío de manera creativa y eficiente.
             </p>
         </section>
 
@@ -188,15 +193,14 @@
         <section id="contacto">
             <h2>Contacto</h2>
             <ul class="contact-list">
-                <li><a href="mailto:tu-email@ejemplo.com">Email</a></li>
-                <li><a href="https://linkedin.com/in/tu-usuario" target="_blank">LinkedIn</a></li>
-                <li><a href="https://behance.net/tu-usuario" target="_blank">Behance</a></li>
-                <li><a href="https://instagram.com/tu-usuario" target="_blank">Instagram</a></li>
-                <li><a href="https://wa.me/569XXXXXXXX" target="_blank">WhatsApp</a></li>
+                <li><a href="mailto:yi.creativa@gmail.com">yi.creativa@gmail.com</a></li>
+                <li><a href="https://www.behance.net/yyyi" target="_blank">Behance</a></li>
+                <!-- Puedes agregar LinkedIn o Instagram si lo deseas -->
+                <!-- <li><a href="#" target="_blank">LinkedIn</a></li> -->
             </ul>
         </section>
 
-        <!-- 4. EXPERIENCIA (TRABAJO) -->
+        <!-- 4. EXPERIENCIA -->
         <section id="trabajo">
             <h2>Experiencia</h2>
             <ul class="entry-list">
@@ -205,37 +209,35 @@
                 <li class="entry">
                     <span class="date">2025 — Presente</span>
                     <div class="details">
-                        <h3>Project Manager</h3>
+                        <h3>Coordinadora de Proyectos de Diseño</h3>
                         <span class="institution">Santiago Design Experience (SDE)</span>
                         <div class="description">
-                            <p>Gestión integral de proyectos de diseño y comunicación. Responsable de la planificación, seguimiento y control de calidad en entregables de Branding, Redes Sociales, Web y Copywriting.</p>
-                            <p>— Nexo estratégico entre cliente y equipo creativo.<br>
-                            — Coordinación de equipos internos y externos.<br>
-                            — Validación de avances y presentaciones a cliente.</p>
+                            <p>Gestión y visión global de proyectos creativos, asegurando que el objetivo del cliente se traduzca en una ejecución visual coherente y de alto impacto.</p>
+                            <p>Responsable de orquestar el flujo de trabajo, validar entregables y mantener la comunicación estratégica entre el cliente y el equipo de diseño.</p>
                         </div>
                     </div>
                 </li>
 
-                <!-- Trabajo Anterior (Ejemplo - Rellena con tus datos) -->
+                <!-- Trabajo Anterior: tttravesuras -->
                 <li class="entry">
                     <span class="date">2023 — 2024</span>
                     <div class="details">
-                        <h3>Diseñadora Freelance / Founder</h3>
+                        <h3>Fundadora & Directora Creativa</h3>
                         <span class="institution">tttravesuras</span>
                         <div class="description">
-                            Dirección creativa, diseño de producto y gestión de marca para proyecto de joyería de autor. Desarrollo de identidad visual, packaging y estrategia de contenido.
+                            Creación y gestión integral de marca de joyería de autor. Desarrollo de identidad visual, packaging, fotografía de producto y estrategia de contenido digital.
                         </div>
                     </div>
                 </li>
 
-                <!-- Trabajo Anterior (Ejemplo) -->
+                <!-- Trabajo Anterior: Ayudantía -->
                 <li class="entry">
                     <span class="date">2020 — 2022</span>
                     <div class="details">
                         <h3>Ayudante Académica</h3>
-                        <span class="institution">Universidad [Nombre de tu U]</span>
+                        <span class="institution">Universidad de Chile</span>
                         <div class="description">
-                            Apoyo docente en cátedras de diseño, guiando a alumnos en procesos proyectuales y correcciones gráficas.
+                            Apoyo docente en cátedras de diseño, guiando a alumnos en procesos proyectuales, correcciones gráficas y conceptualización.
                         </div>
                     </div>
                 </li>
@@ -249,20 +251,14 @@
             <ul class="entry-list">
                 
                 <li class="entry">
-                    <span class="date">2018 — 2022</span> <!-- Ajusta la fecha real -->
+                    <span class="date">2018 — 2022</span>
                     <div class="details">
-                        <h3>Licenciatura en Diseño</h3>
-                        <span class="institution">Universidad [Nombre]</span>
+                        <h3>Diseñadora (Licenciatura en Diseño)</h3>
+                        <span class="institution">Universidad de Chile</span>
                     </div>
                 </li>
 
-                <li class="entry">
-                    <span class="date">2023</span>
-                    <div class="details">
-                        <h3>Curso / Diplomado [Nombre]</h3>
-                        <span class="institution">Institución [Nombre]</span>
-                    </div>
-                </li>
+                <!-- Puedes agregar diplomados o cursos aquí si tienes -->
 
             </ul>
         </section>
