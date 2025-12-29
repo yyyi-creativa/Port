@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+t<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -354,41 +354,5 @@
         </footer>
 
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
-    <script>
-        // CONFIGURACIÓN COUNTERAPI
-        // Como tienes cuenta, reemplaza 'TU_NAMESPACE' y 'TU_KEY' con los datos que te dio counterapi.
-        // Si no tienes KEY, counterapi permite usar solo namespace y generará un contador público.
-        // Ejemplo de namespace: 'yi-portfolio.com' o 'misitio'
-        
-        const NAMESPACE = 'yyyi-creativas-team-2294'; // Puedes cambiar esto
-        const KEY = 'ut_iqjJ6kAiDleaNEO39La5Kk3YWDvsKaMSNtokwSht'; // Puedes cambiar esto
-
-        const counterElement = document.getElementById('visit-counter');
-
-        // Función para obtener y aumentar el contador
-        // Nota: CounterAPI tiene endpoints como 'hit' (aumenta) o 'get' (solo lee).
-        // Usamos 'hit' para contar cada carga de página.
-        
-        // URL para Counterapi (Verifica si usas counterapi.dev o countapi.xyz)
-        // Ejemplo genérico usando countapi.xyz (muy común):
-        
-        const API_URL = `https://api.counterapi.dev/v2/yyyi-creativas-team-2294/first-counter-2294/up`;
-          -H "Authorization: Bearer ut_iqjJ6kAiDleaNEO39La5Kk3YWDvsKaMSNtokwSht"
-
-        
-
-        fetch(API_URL)
-            .then(response => response.json())
-            .then(data => {
-                // Actualiza el texto en el footer
-                counterElement.innerText = `Visitas: ${data.value}`;
-            })
-            .catch(error => {
-                console.error('Error al cargar contador:', error);
-                counterElement.innerText = 'Visitas: --';
-            });
-    </script>
 </body>
 </html>
