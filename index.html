@@ -1,4 +1,4 @@
-t<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -28,15 +28,15 @@ t<!DOCTYPE html>
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0;
-            display: flex;
+            display: flex; /* Esto es clave para que el sidebar funcione al lado */
         }
 
-        /* SIDEBAR */
+        /* --- SIDEBAR (Barra lateral pegajosa) --- */
         .sidebar {
             width: var(--sidebar-width);
-            height: 100vh;
-            position: sticky;
-            top: 0;
+            height: 100vh; /* Ocupa toda la altura de la pantalla */
+            position: sticky; /* Se queda pegada */
+            top: 0; /* Al borde superior */
             background-color: #fff; 
             border-right: 1px solid #eee;
             padding: 50px 30px; 
@@ -61,20 +61,107 @@ t<!DOCTYPE html>
             text-decoration: none;
             color: #888;
             font-size: 0.95rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
             display: block;
+            border-left: 2px solid transparent;
+            padding-left: 0;
         }
-        .nav-link:hover, .nav-link.active { color: #000; font-weight: 500; }
+        
+        /* Estado Hover y Activo */
+        .nav-link:hover, .nav-link.active { 
+            color: #000; 
+            font-weight: 600; 
+            padding-left: 10px; /* Pequeña animación de desplazamiento */
+            border-left: 2px solid #000;
+        }
 
         .social-mini { display: flex; gap: 10px; font-size: 0.8rem; }
         .social-mini a { text-decoration: none; color: #888; }
 
-        /* MAIN */
+        /* --- MAIN CONTENT --- */
         main { flex: 1; width: 100%; }
         section { width: 100%; position: relative; }
+        
+        /* Contenedor estándar */
         .container { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
 
-        /* HERO */
+        /* --- CLASES DE GRID (Columnas 2 y 4) --- */
+        
+        /* Grid de 2 Columnas */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Grid de 4 Columnas */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Estilos para las imágenes/videos dentro del grid */
+        .grid-item img, .grid-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .full-width { grid-column: 1 / -1; width: 100%; }
+
+
+        /* --- ESTILOS DE PROYECTO (Alineación Izquierda) --- */
+        #navi { background-color: #F8F5F2; } 
+        #miu { background-color: #FFF0F5; } 
+        #luck { background-color: #EEEAE6; }
+
+        .project-header {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; 
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            text-align: left; /* Alineado a la izquierda */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-title h2 { 
+            font-size: 3.5rem; 
+            margin-bottom: 10px; 
+            line-height: 1.1;
+        }
+        
+        .project-title span { 
+            display: block; 
+            color: #666; 
+            font-size: 1.1rem; 
+            margin-bottom: 20px; 
+            font-weight: 500;
+        }
+        
+        .project-title p {
+            max-width: 450px; 
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .tag { border: 1px solid #333; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
+
+
+        /* --- HERO & BIO --- */
         #hero {
             background-color: var(--bg-dark);
             color: var(--text-white);
@@ -100,7 +187,6 @@ t<!DOCTYPE html>
         }
         
         .hero-text p { font-size: 1.2rem; opacity: 0.8; }
-        
         .hero-img img {
             width: 100%; height: auto; border-radius: 8px;
             animation: float 6s ease-in-out infinite;
@@ -112,69 +198,11 @@ t<!DOCTYPE html>
             100% { transform: translateY(0px); }
         }
 
-        /* BIO */
         #about { background-color: var(--bg-red); color: var(--text-white); }
         .bio-layout { display: grid; grid-template-columns: 300px 1fr; gap: 60px; }
         .skills-list { list-style: none; border-left: 2px solid rgba(255,255,255,0.3); padding-left: 20px; }
         .skills-list li { margin-bottom: 15px; font-size: 1.1rem; }
-        .bio-content p {
-            font-size: 1.25rem;
-            font-weight: 400;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            color: #FFFFFF;
-            /* CAMBIO: Eliminado max-width 95% para usar todo el ancho */
-            max-width: 100%; 
-        }
-        
-
-        /* PROYECTOS - ESTILOS ACTUALIZADOS */
-        #navi { background-color: #F8F5F2; } 
-        #miu { background-color: #F8F5F2; } 
-        #luck { background-color: #F8F5F2; }
-
-        .project-header {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr; /* Imagen grande, texto lateral */
-            gap: 50px;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-
-        /* Clase específica para forzar alineación a la izquierda */
-        .project-title {
-            text-align: left; /* Alineación forzada a la izquierda */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-title h2 { 
-            font-size: 3.5rem; 
-            margin-bottom: 10px; 
-            line-height: 1.1;
-        }
-        
-        .project-title span { 
-            display: block; 
-            color: #666; 
-            font-size: 1.1rem; 
-            margin-bottom: 20px; 
-            font-weight: 500;
-        }
-        
-        .project-title p {
-            max-width: 400px; /* Evita que el texto se estire demasiado */
-            line-height: 1.6;
-            color: #444;
-        }
-        
-        .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
-        .tag { border: 1px solid #333; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
-
-        .project-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        .gallery-item img, .gallery-item video { width: 100%; height: auto; display: block; border-radius: 4px; }
-        .full-width { grid-column: 1 / -1; }
+        .bio-content p { font-size: 1.5rem; line-height: 1.4; font-weight: 300; }
 
         /* VISUAL LAB */
         #lab { background-color: #111; color: #fff; }
@@ -188,7 +216,6 @@ t<!DOCTYPE html>
         .footer-big { font-family: 'Playfair Display', serif; font-size: 5rem; margin-bottom: 20px; }
         .footer-info a { color: #fff; text-decoration: none; margin: 0 15px; font-size: 1.1rem; }
         
-        /* Estilo del contador */
         .visit-badge {
             margin-top: 40px;
             font-size: 0.85rem;
@@ -200,17 +227,28 @@ t<!DOCTYPE html>
             border-radius: 4px;
         }
 
-        /* RESPONSIVE */
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             body { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; padding: 20px; flex-direction: row; align-items: center; }
-            .nav-list { display: none; }
-            .hero-grid, .bio-layout, .project-header, .project-gallery, .lab-grid { grid-template-columns: 1fr; }
-            .project-title { text-align: left; align-items: flex-start; } /* Asegura izq en móvil también */
+            .sidebar { 
+                width: 100%; height: auto; padding: 20px; 
+                flex-direction: row; align-items: center; 
+                border-bottom: 1px solid #eee;
+                position: relative; /* En movil deja de ser sticky vertical */
+            }
+            .nav-list { display: none; } /* Ocultar menú en móvil simple */
+            
+            .hero-grid, .bio-layout, .project-header { grid-template-columns: 1fr; }
+            
+            /* Colapsar columnas en móvil */
+            .grid-2, .grid-4, .lab-grid { grid-template-columns: 1fr; gap: 15px; }
+            
+            .project-title { text-align: left; align-items: flex-start; }
             .hero-text h1 { font-size: 3rem; }
             .footer-big { font-size: 3rem; }
-            /* En móvil, invertimos orden si quieres imagen arriba texto abajo */
-            .project-header > .project-title { order: 2; } 
+            
+            /* Reordenar: Imagen primero, texto después en móvil */
+            .project-header > .project-title { order: 2; }
             .project-header > .project-img-hero { order: 1; }
         }
     </style>
@@ -220,7 +258,7 @@ t<!DOCTYPE html>
     <nav class="sidebar">
         <div class="logo">Yi Saint-Jour</div>
         <ul class="nav-list">
-            <li class="nav-item"><a href="#hero" class="nav-link active">Inicio</a></li>
+            <li class="nav-item"><a href="#hero" class="nav-link">Inicio</a></li>
             <li class="nav-item"><a href="#about" class="nav-link">Bio</a></li>
             <li class="nav-item"><a href="#navi" class="nav-link">Navi</a></li>
             <li class="nav-item"><a href="#miu" class="nav-link">Miu Nail Studio</a></li>
@@ -241,7 +279,7 @@ t<!DOCTYPE html>
                     <p>Diseño Multidisciplinar | Identidad | 3D</p>
                 </div>
                 <div class="hero-img">
-                    <img src="ruta/a/tu/imagen_portada.jpg" alt="Arte 3D Abstracto">
+                    <img src="image_0a2347.jpg" alt="Portada Arte 3D">
                 </div>
             </div>
         </section>
@@ -265,7 +303,7 @@ t<!DOCTYPE html>
             <div class="container">
                 <div class="project-header">
                     <div class="project-img-hero">
-                        <img src="ruta/a/navi_render.jpg" style="width:100%; border-radius:8px;" alt="Navi Render">
+                        <img src="image_0a7980.jpg" style="width:100%; border-radius:8px;" alt="Navi Render Principal">
                     </div>
                     <div class="project-title">
                         <h2>navi</h2>
@@ -277,19 +315,29 @@ t<!DOCTYPE html>
                         </div>
                     </div>
                 </div>
-                <div class="project-gallery">
-                    <div class="gallery-item"><img src="ruta/a/navi_stickers.jpg" alt="Navi Assets"></div>
-                    <div class="gallery-item"><img src="ruta/a/navi_grid.jpg" alt="Navi Social Grid"></div>
+
+                <div class="grid-2">
+                    <div class="grid-item">
+                        <img src="image_0a7cc1.jpg" alt="Navi Grid">
+                    </div>
+                    <div class="grid-item">
+                        <img src="image_0a7980.jpg" alt="Navi Render Detalle">
+                    </div>
                 </div>
+
+                <div class="grid-4">
+                    <div class="grid-item"><img src="image_0a7db9.jpg" alt="Icono 1"></div>
+                    <div class="grid-item"><img src="image_0a2651.jpg" alt="Icono 2"></div>
+                    <div class="grid-item"><img src="image_0a7db9.jpg" alt="Icono 3"></div>
+                    <div class="grid-item"><img src="image_0a2651.jpg" alt="Icono 4"></div>
+                </div>
+
             </div>
         </section>
 
         <section id="miu">
-             <div class="container">
-                <div class="project-header">
-                    <div class="project-img-hero">
-                        <img src="ruta/a/navi_render.jpg" style="width:100%; border-radius:8px;" alt="Navi Render">
-                    </div>
+            <div class="container">
+                <div class="project-header" style="grid-template-columns: 1fr 1.5fr;">
                     <div class="project-title">
                         <h2>MIU NAIL STUDIO</h2>
                         <span>Logotipo & Highlights</span>
@@ -299,10 +347,13 @@ t<!DOCTYPE html>
                             <span class="tag">Social Media</span>
                         </div>
                     </div>
+                    <div class="project-img-hero">
+                        <img src="image_0a7d3c.jpg" style="width:100%; border-radius:8px;" alt="Miu Logo 3D">
+                    </div>
                 </div>
-                <div class="project-gallery">
-                    <div class="gallery-item"><img src="ruta/a/navi_stickers.jpg" alt="Navi Assets"></div>
-                    <div class="gallery-item"><img src="ruta/a/navi_grid.jpg" alt="Navi Social Grid"></div>
+                
+                <div class="full-width" style="margin-bottom: 20px;">
+                     <img src="image_0a7d7a.jpg" style="width:100%; border-radius:4px;" alt="Miu Brand Board">
                 </div>
             </div>
         </section>
@@ -311,7 +362,7 @@ t<!DOCTYPE html>
             <div class="container">
                 <div class="project-header">
                     <div class="project-img-hero">
-                        <img src="ruta/a/luck_mockup.jpg" style="width:100%; border-radius:8px;" alt="Luck Inside Mockup">
+                        <img src="image_0a7924.jpg" style="width:100%; border-radius:8px;" alt="Luck Inside Mockup">
                     </div>
                     <div class="project-title">
                         <h2>Luck Inside<br>7 Doors</h2>
@@ -330,12 +381,12 @@ t<!DOCTYPE html>
             <div class="container">
                 <h2 style="margin-bottom: 40px; font-size: 2rem;">Visual Exploration</h2>
                 <div class="lab-grid">
-                    <div class="lab-item"><img src="ruta/a/abstract_01.jpg" alt="3D Art"></div>
-                    <div class="lab-item"><img src="ruta/a/abstract_02.jpg" alt="3D Art"></div>
-                    <div class="lab-item"><img src="ruta/a/abstract_03.jpg" alt="3D Art"></div>
-                    <div class="lab-item"><img src="ruta/a/abstract_04.jpg" alt="3D Art"></div>
-                    <div class="lab-item"><img src="ruta/a/abstract_05.jpg" alt="3D Art"></div>
-                    <div class="lab-item"><img src="ruta/a/abstract_06.jpg" alt="3D Art"></div>
+                    <div class="lab-item"><img src="image_0a7db9.jpg" alt="3D Art"></div>
+                    <div class="lab-item"><img src="image_0a2651.jpg" alt="3D Art"></div>
+                    <div class="lab-item"><img src="image_0a7db9.jpg" alt="3D Art"></div>
+                    <div class="lab-item"><img src="image_0a2651.jpg" alt="3D Art"></div>
+                    <div class="lab-item"><img src="image_0a7db9.jpg" alt="3D Art"></div>
+                    <div class="lab-item"><img src="image_0a2651.jpg" alt="3D Art"></div>
                 </div>
             </div>
         </section>
@@ -347,7 +398,7 @@ t<!DOCTYPE html>
                 <a href="#">+569 4987 3116</a>
                 <br><br>
                 <div class="visit-badge" id="visit-counter">
-                    Visitas: Cargando...
+                    Visitas: ...
                 </div>
                 <br><br>
                 <span style="font-size: 0.8rem; opacity: 0.7;">© 2026 Yi Saint-Jour.</span>
@@ -355,5 +406,49 @@ t<!DOCTYPE html>
         </footer>
 
     </main>
+
+    <script>
+        // --- 1. CONFIGURACIÓN DEL CONTADOR DE VISITAS ---
+        // IMPORTANTE: Reemplaza 'yi-saint-jour-portfolio' con tu propio nombre si quieres un contador único.
+        // Si usas counterapi.xyz, la URL es correcta. Si usas otro servicio, cambia la URL.
+        
+        const NAMESPACE = 'yi-saint-jour-portfolio'; 
+        const KEY = 'visitas'; 
+        const API_URL = `https://api.countapi.xyz/hit/${NAMESPACE}/${KEY}`;
+        const counterElement = document.getElementById('visit-counter');
+
+        fetch(API_URL)
+            .then(response => response.json())
+            .then(data => {
+                counterElement.innerText = `Visitas: ${data.value}`;
+            })
+            .catch(error => {
+                console.error('Error al cargar contador:', error);
+                counterElement.innerText = 'Visitas: --';
+            });
+
+        // --- 2. ACTIVE SCROLL SPY (Para que la barra lateral "se mueva" visualmente) ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // El -200 ajusta el punto de activación para que sea agradable visualmente
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
